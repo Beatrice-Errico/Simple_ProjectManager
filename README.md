@@ -12,23 +12,32 @@ Web app per gestire Progetti e Task.
 - Composer
 - Node.js + npm
 
-## Setup
+## Setup & Run (comandi completi)
 
-### 1 Install dipendenze
-
+```bash
+# 1) Install dipendenze
 composer install
 npm install
 
-### 2 Reset database (opzionale)
+# 2) Config .env + APP_KEY
+cp .env.example .env
+php artisan key:generate
 
-php artisan migrate:fresh
+# 3) Database SQLite: crea file
+mkdir -p database
+touch database/database.sqlite
 
+# 4) Imposta nel .env:
+# DB_CONNECTION=sqlite
+# DB_DATABASE=database/database.sqlite
 
-### 3 Avvio in locale
-Apri due terminali:
+# 5) Pulisci cache e migra
+php artisan optimize:clear
+php artisan migrate
 
--Terminale A (Laravel)
+# 6) Avvio (due terminali)
+# Terminale A:
 php artisan serve
 
--Terminale B 
+# Terminale B:
 npm run dev
