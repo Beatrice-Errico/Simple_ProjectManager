@@ -19,7 +19,12 @@ Web app per gestire Progetti e Task.
 composer install
 npm install
 
-### 2 Avvio in locale
+### 2 Reset database (opzionale)
+
+php artisan migrate:fresh
+
+
+### 3 Avvio in locale
 Apri due terminali:
 
 -Terminale A (Laravel)
